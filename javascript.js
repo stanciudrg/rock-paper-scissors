@@ -4,7 +4,14 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    return prompt('Rock, Paper or Scissors?').toUpperCase();
+    answer = prompt('Rock, Paper or Scissors?').toUpperCase();
+    if (answer == 'SCISSORS' || answer == 'PAPER' || answer == 'ROCK') {
+        return answer;
+    } else {
+        alert("Please enter a correct value");
+        getPlayerChoice();
+        return answer;
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -21,9 +28,6 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
         return `You chose ${playerSelection} and the computer chose ${computerSelection}. ROCK beats SCISSORS. You lost!`;
     } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
-        return `You chose ${playerSelection} and the computer chose ${computerSelection}. SCISSORS beats PAPER. You won!`
+        return `You chose ${playerSelection} and the computer chose ${computerSelection}. SCISSORS beats PAPER. You won!`;
     }
 }
-
-const playerSelection = getPlayerChoice()
-const computerSelection = getComputerChoice();
