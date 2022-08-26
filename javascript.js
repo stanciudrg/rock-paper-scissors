@@ -48,5 +48,8 @@ function startGame() {
         const playerSelection = checkPlayerChoice();
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
+        if (playerSelection == null) {
+            break;
+        }
     }
 }
