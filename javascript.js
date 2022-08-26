@@ -3,13 +3,13 @@ function getComputerChoice() {
     return (choices[Math.floor(choices.length * Math.random())]);
 }
 
-function getPlayerChoice() {
-    let answer = prompt('Rock, Paper or Scissors?').toUpperCase();
-    while (answer !== 'ROCK' && answer !== 'PAPER' && answer !== 'SCISSORS' && answer !== null) {
+function checkPlayerChoice() {
+    let choice = prompt('Rock, Paper or Scissors?').toUpperCase();
+    while (choice !== 'ROCK' && choice !== 'PAPER' && choice !== 'SCISSORS' && choice !== null) {
         alert('Please enter a correct value');
-        return getPlayerChoice();
+        return checkPlayerChoice();
     }
-    return answer;
+    return choice;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -34,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
 function startGame() {
 
     for (i = 0; i < 5; i++) {
-        const playerSelection = getPlayerChoice();
+        const playerSelection = checkPlayerChoice();
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
     }
