@@ -3,8 +3,17 @@ function getComputerChoice() {
     return (choices[Math.floor(choices.length * Math.random())]);
 }
 
+function convertPlayerChoice() {
+    let choice = prompt('Rock, Paper or Scissors?');
+    if (choice != null) {
+        return choice.toUpperCase();
+    } else {
+        return null;
+    }
+}
+
 function checkPlayerChoice() {
-    let choice = prompt('Rock, Paper or Scissors?').toUpperCase();
+    let choice = convertPlayerChoice();
     while (choice !== 'ROCK' && choice !== 'PAPER' && choice !== 'SCISSORS' && choice !== null) {
         alert('Please enter a correct value');
         return checkPlayerChoice();
