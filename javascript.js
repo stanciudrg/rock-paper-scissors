@@ -37,6 +37,8 @@ function playRound(playerSelection, computerSelection) {
         return `You chose ${playerSelection} and the computer chose ${computerSelection}. ROCK beats SCISSORS. You lost!`;
     } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
         return `You chose ${playerSelection} and the computer chose ${computerSelection}. SCISSORS beats PAPER. You won!`;
+    } else {
+        return "\nYou cancelled the game. Enter 'startGame()' in the console if you want to play again.\n\n";
     }
 }
 
