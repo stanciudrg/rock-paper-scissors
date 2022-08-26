@@ -4,14 +4,12 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    answer = prompt('Rock, Paper or Scissors?').toUpperCase();
-    if (answer == 'SCISSORS' || answer == 'PAPER' || answer == 'ROCK') {
-        return answer;
-    } else {
-        alert("Please enter a correct value");
-        getPlayerChoice();
-        return answer;
+    let answer = prompt('Rock, Paper or Scissors?').toUpperCase();
+    while (answer !== 'ROCK' && answer !== 'PAPER' && answer !== 'SCISSORS' && answer !== null) {
+        alert('Please enter a correct value');
+        return getPlayerChoice();
     }
+    return answer;
 }
 
 function playRound(playerSelection, computerSelection) {
