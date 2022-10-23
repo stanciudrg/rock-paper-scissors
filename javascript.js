@@ -1,3 +1,28 @@
+// UI program
+
+let startContainer = document.querySelector(".start-game-container");
+let startButton = document.querySelector(".start-game-button");
+console.log(startButton);
+let loadingElement = document.querySelector("#loading");
+console.log(loading);
+let gameContainer = document.querySelector(".game-container");
+
+
+// Replace Start Game button with loading animation
+startButton.addEventListener('click', () => {
+    startButton.style.display = 'none';
+    loadingElement.style.display = 'block';
+
+    // Display the loading animation for 3s and start the game
+    setTimeout(() => {
+        loadingElement.style.display = 'none';
+        startContainer.style.display = 'none';
+        gameContainer.style.display = 'block';
+    }, 3000);
+})
+
+/* Console program
+
 console.log("\nWelcome to Rock, Paper and Scissors! Type 'startGame()' in the console to start playing.\n\n")
 let computer = 0;
 let player = 0;
@@ -82,4 +107,4 @@ function startGame() {
     } else {
         return console.log("\nLooks like you won the game, as you have the higher overall score. Good job! Type 'startGame()' in the console to play again.\n\n")
     }
-}
+} */

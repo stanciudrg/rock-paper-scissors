@@ -1,0 +1,185 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+/* --- */
+
+/* CSS reset */
+
+* {
+    font-family: 'Play', arial, helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- */
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom right,
+            hsl(214.84, 26.5%, 22.94%) 0%,
+            hsl(214.78, 26.68%, 22.91%) 8.1%,
+            hsl(214.62, 27.22%, 22.83%) 15.5%,
+            hsl(214.37, 28.07%, 22.69%) 22.5%,
+            hsl(214.04, 29.2%, 22.52%) 29%,
+            hsl(213.66, 30.58%, 22.3%) 35.3%,
+            hsl(213.24, 32.19%, 22.06%) 41.2%,
+            hsl(212.79, 34%, 21.79%) 47.1%,
+            hsl(212.32, 35.96%, 21.5%) 52.9%,
+            hsl(211.85, 38.03%, 21.21%) 58.8%,
+            hsl(211.39, 40.14%, 20.92%) 64.7%,
+            hsl(210.96, 42.19%, 20.64%) 71%,
+            hsl(210.58, 44.07%, 20.39%) 77.5%,
+            hsl(210.28, 45.62%, 20.18%) 84.5%,
+            hsl(210.07, 46.67%, 20.05%) 91.9%,
+            hsl(210, 47.06%, 20%) 100%);
+}
+
+header h1 {
+    text-align: center;
+    margin-top: 4rem;
+    font-size: 3rem;
+    color: #f4f8fc;
+}
+
+/* H1 split in 3 spans for customization purposes */
+
+.rock {}
+
+.paper {}
+
+.scissors {}
+
+/* --- */
+
+/* Start game section */
+
+.start-game-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.start-game-button {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f8fc;
+    color: #22354b;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    box-shadow: 6px 6px 20px 5px rgba(34, 53, 75, 0.4);
+    cursor: pointer;
+}
+
+/* Loading animation */
+
+.flip-square-travel {
+    display: none;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    perspective: 150px;
+    -webkit-perspective: 150px;
+    animation: flip-square-travel-switch 2s infinite linear;
+    -webkit-animation: flip-square-travel-switch 2s infinite linear;
+}
+
+.flip-square-travel:before {
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    content: '';
+    background-color: #f4f8fc;
+    animation: flip-square-travel 1s infinite;
+    -webkit-animation: flip-square-travel 1s infinite;
+    transform-origin: bottom;
+    -webkit-transform-origin: bottom;
+}
+
+@-webkit-keyframes flip-square-travel-switch {
+
+    0%,
+    50% {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    50.001%,
+    100% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes flip-square-travel-switch {
+
+    0%,
+    50% {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    50.001%,
+    100% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+}
+
+@-webkit-keyframes flip-square-travel {
+    0% {
+        -webkit-transform: translate(0, 0) rotateX(0deg);
+        transform: translate(0, 0) rotateX(0deg);
+    }
+
+    50% {
+        -webkit-transform: translate(0, -100%) rotateX(0deg);
+        transform: translate(0, -100%) rotateX(0deg);
+    }
+
+    100% {
+        -webkit-transform: translate(0, -100%) rotateX(-180deg);
+        transform: translate(0, -100%) rotateX(-180deg);
+    }
+}
+
+@keyframes flip-square-travel {
+    0% {
+        -webkit-transform: translate(0, 0) rotateX(0deg);
+        transform: translate(0, 0) rotateX(0deg);
+    }
+
+    50% {
+        -webkit-transform: translate(0, -100%) rotateX(0deg);
+        transform: translate(0, -100%) rotateX(0deg);
+    }
+
+    100% {
+        -webkit-transform: translate(0, -100%) rotateX(-180deg);
+        transform: translate(0, -100%) rotateX(-180deg);
+    }
+}
+
+/* ---- */
+
+/* Game section */
+
+.game-container {
+    display: none;
+    width: 700px;
+    height: 500px;
+    margin: auto;
+    background-color: #f4f8fc;
+}
