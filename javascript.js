@@ -82,4 +82,5 @@ function startGame() {
     } else {
         return console.log("\nLooks like you won the game, as you have the higher overall score. Good job! Type 'startGame()' in the console to play again.\n\n")
     }
+
 }
