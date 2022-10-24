@@ -17,7 +17,12 @@ startButton.addEventListener('click', () => {
     setTimeout(() => {
         loadingElement.style.display = 'none';
         startContainer.style.display = 'none';
-        gameContainer.style.display = 'block';
+        gameContainer.style.display = 'flex';
+        // Adds transition for Game Container
+        setTimeout(() => {
+            gameContainer.style.opacity = '1';
+            gameContainer.style.transform = 'scale(1)';
+        }, 10)
     }, 3000);
 })
 
