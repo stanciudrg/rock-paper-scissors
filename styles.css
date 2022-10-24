@@ -1,16 +1,17 @@
 /* Fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 /* --- */
 
 /* CSS reset */
 
 * {
-    font-family: 'Play', arial, helvetica, sans-serif;
+    font-family: 'Space Grotesk', arial, helvetica, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    letter-spacing: normal;
 }
 
 /* --- */
@@ -22,23 +23,7 @@ body {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to bottom right,
-            hsl(214.84, 26.5%, 22.94%) 0%,
-            hsl(214.78, 26.68%, 22.91%) 8.1%,
-            hsl(214.62, 27.22%, 22.83%) 15.5%,
-            hsl(214.37, 28.07%, 22.69%) 22.5%,
-            hsl(214.04, 29.2%, 22.52%) 29%,
-            hsl(213.66, 30.58%, 22.3%) 35.3%,
-            hsl(213.24, 32.19%, 22.06%) 41.2%,
-            hsl(212.79, 34%, 21.79%) 47.1%,
-            hsl(212.32, 35.96%, 21.5%) 52.9%,
-            hsl(211.85, 38.03%, 21.21%) 58.8%,
-            hsl(211.39, 40.14%, 20.92%) 64.7%,
-            hsl(210.96, 42.19%, 20.64%) 71%,
-            hsl(210.58, 44.07%, 20.39%) 77.5%,
-            hsl(210.28, 45.62%, 20.18%) 84.5%,
-            hsl(210.07, 46.67%, 20.05%) 91.9%,
-            hsl(210, 47.06%, 20%) 100%);
+    background-color: #232326;
 }
 
 header h1 {
@@ -46,6 +31,7 @@ header h1 {
     margin-top: 4rem;
     font-size: 3rem;
     color: #f4f8fc;
+    font-weight: bold;
 }
 
 /* H1 split in 3 spans for customization purposes */
@@ -74,11 +60,28 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f4f8fc;
-    color: #22354b;
+    background-image:
+        linear-gradient(to right,
+            hsl(330, 100%, 45.1%) 0%,
+            hsl(332, 89.44%, 47.61%) 7.6%,
+            hsl(334.4, 80.96%, 49.84%) 14.7%,
+            hsl(337.33, 79.59%, 51.96%) 21.5%,
+            hsl(340.82, 78.71%, 53.95%) 28.1%,
+            hsl(344.9, 77.81%, 55.83%) 34.4%,
+            hsl(349.59, 76.89%, 57.57%) 40.5%,
+            hsl(354.91, 75.98%, 59.18%) 46.6%,
+            hsl(0.83, 75.35%, 60.23%) 52.7%,
+            hsl(6.56, 76.37%, 58.5%) 58.8%,
+            hsl(11.62, 77.4%, 56.63%) 65%,
+            hsl(16.02, 78.4%, 54.62%) 71.4%,
+            hsl(19.81, 79.37%, 52.47%) 78%,
+            hsl(23.01, 80.31%, 50.2%) 84.9%,
+            hsl(25.65, 88.69%, 47.8%) 92.2%,
+            hsl(27.91, 100%, 45.1%) 100%);
+    color: #f4f8fc;
+    font-weight: bold;
     font-size: 1.3rem;
     border-radius: 5px;
-    box-shadow: 6px 6px 20px 5px rgba(34, 53, 75, 0.4);
     cursor: pointer;
 }
 
@@ -101,7 +104,23 @@ header h1 {
     height: 50px;
     width: 50px;
     content: '';
-    background-color: #f4f8fc;
+    background-image: linear-gradient(to right,
+            hsl(330, 100%, 45.1%) 0%,
+            hsl(332, 89.44%, 47.61%) 7.6%,
+            hsl(334.4, 80.96%, 49.84%) 14.7%,
+            hsl(337.33, 79.59%, 51.96%) 21.5%,
+            hsl(340.82, 78.71%, 53.95%) 28.1%,
+            hsl(344.9, 77.81%, 55.83%) 34.4%,
+            hsl(349.59, 76.89%, 57.57%) 40.5%,
+            hsl(354.91, 75.98%, 59.18%) 46.6%,
+            hsl(0.83, 75.35%, 60.23%) 52.7%,
+            hsl(6.56, 76.37%, 58.5%) 58.8%,
+            hsl(11.62, 77.4%, 56.63%) 65%,
+            hsl(16.02, 78.4%, 54.62%) 71.4%,
+            hsl(19.81, 79.37%, 52.47%) 78%,
+            hsl(23.01, 80.31%, 50.2%) 84.9%,
+            hsl(25.65, 88.69%, 47.8%) 92.2%,
+            hsl(27.91, 100%, 45.1%) 100%);
     animation: flip-square-travel 1s infinite;
     -webkit-animation: flip-square-travel 1s infinite;
     transform-origin: bottom;
