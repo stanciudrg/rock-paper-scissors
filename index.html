@@ -8,6 +8,7 @@
     <title>Rock Paper Scissors</title>
     <script src="javascript.js" defer></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/469d5b5476.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,20 +23,40 @@
         </div>
     </div>
     <div class="game-container">
-        <div class="game-info">
+        <div class="game-title">
             <h2>The first to reach 5 points wins the game</h2>
+        </div>
+        <div class="game-options">
+            <a class="home-button" href="index.html">Home</a>
+            <div class="game-info">
+                <p>Select your weapon</p>
+            </div>
+            <div class="restart-button">
+                <p>Restart</p>
+            </div>
         </div>
         <div class="scoreboard">
             <div class="player-score">
                 <div class="player">Player</div>
                 <div class="score">0</div>
+                <div class="game-buttons">
+                    <i id="rock-icon-player" class="fa-solid fa-hand-back-fist"></i>
+                    <i id="paper-icon-player" class="fa-solid fa-hand"></i>
+                    <i id="scissors-icon-player" class="fa-solid fa-hand-scissors"></i>
+                </div>
             </div>
             <div class="computer-score">
                 <div class="computer">Computer</div>
                 <div class="score">0</div>
+                <div class="game-buttons">
+                    <i id="rock-icon-computer" class="fa-solid fa-hand-back-fist"></i>
+                    <i id="paper-icon-computer" class="fa-solid fa-hand"></i>
+                    <i id="scissors-icon-computer" class="fa-solid fa-hand-scissors"></i>
+                </div>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
