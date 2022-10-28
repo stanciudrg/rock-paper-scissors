@@ -410,7 +410,7 @@ header h1 {
     font-size: 5rem;
     color: #f4f8fc;
     filter: drop-shadow(1px 1px 13px rgba(5, 5, 5, 0.1));
-    transition: .18s;
+    transition: .18s all;
 }
 
 #rock-icon-player,
@@ -419,18 +419,9 @@ header h1 {
     cursor: pointer;
 }
 
-#rock-icon-player:hover,
-#paper-icon-player:hover {
-    transform: scale(1.2);
-}
-
 #scissors-icon-player,
 #scissors-icon-computer {
     transform: rotate(90deg);
-}
-
-#scissors-icon-player:hover {
-    transform: scale(1.2) rotate(90deg);
 }
 
 .player-final-results,

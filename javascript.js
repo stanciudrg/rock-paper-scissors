@@ -40,6 +40,10 @@ let computerScore = document.querySelector('.computer-score');
 let playerFinalResults = document.querySelector('.player-final-results');
 let computerFinalResults = document.querySelector('.computer-final-results');
 
+// Player and computer icons container
+
+let buttonsContainer = document.querySelector('.game-buttons');
+
 // Player icons
 let rockIconPlayer = document.querySelector('#rock-icon-player');
 let paperIconPlayer = document.querySelector('#paper-icon-player');
@@ -58,36 +62,73 @@ let computerSelection;
 
 function endGame() {
     if (computer == 5 || player == 5) {
+        buttonsContainer.style = 'pointer-events:none';
         setTimeout(() => {
             playerFinalResults.style.bottom = '0px';
             computerFinalResults.style.bottom = '0px';
-        }, 500)
+        }, 1000)
         if (computer > player) {
             playerFinalResults.firstElementChild.textContent = 'Loser';
             computerFinalResults.firstElementChild.textContent = 'Winner';
         } else if (computer < player) {
             playerFinalResults.firstElementChild.textContent = 'Winner';
             computerFinalResults.firstElementChild.textContent = 'Loser';
+        } else {
+            playerFinalResults.firstElementChild.textContent = 'Tie';
+            computerFinalResults.firstElementChild.textContent = 'Tie';
         }
     };
 };
+
+function iconColor() {
+    if (playerSelection == 'ROCK') {
+        rockIconPlayer.style = 'color: ; transform: scale(1.2);';
+        paperIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
+        scissorsIconPlayer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
+    } else if (playerSelection == 'PAPER') {
+        rockIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
+        paperIconPlayer.style = 'color: ; transform: scale(1.2)';
+        scissorsIconPlayer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
+    } else if (playerSelection = 'SCISSORS') {
+        rockIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
+        paperIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
+        scissorsIconPlayer.style = 'color: ; transform: scale(1.3) rotate(90deg);';
+    }
+
+    if (computerSelection == 'ROCK') {
+        rockIconComputer.style = 'color: ; transform: scale(1.2);';
+        paperIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
+        scissorsIconComputer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
+    } else if (computerSelection == 'PAPER') {
+        rockIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
+        paperIconComputer.style = 'color: ; transform: scale(1.2)';
+        scissorsIconComputer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
+    } else if (computerSelection = 'SCISSORS') {
+        rockIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
+        paperIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
+        scissorsIconComputer.style = 'color: ; transform: scale(1.2) rotate(90deg);';
+    }
+}
 
 rockIconPlayer.addEventListener('click', () => {
     playerSelection = 'ROCK';
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    iconColor();
     endGame();
 });
 paperIconPlayer.addEventListener('click', () => {
     playerSelection = 'PAPER';
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    iconColor();
     endGame();
 });
 scissorsIconPlayer.addEventListener('click', () => {
     playerSelection = 'SCISSORS';
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    iconColor();
     endGame();
 });
 
@@ -99,6 +140,10 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         gameInfo.textContent = `You both chose ${playerSelection}, it's a tie.`;
+        computer++;
+        player++;
+        computerScore.textContent = `${computer}`;
+        playerScore.textContent = `${player}`;
     } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
         gameInfo.textContent = `PAPER beats ROCK. You lost.`;
         computer++;
