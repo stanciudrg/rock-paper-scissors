@@ -1,4 +1,4 @@
-/* UI program
+// UI program
 
 let startContainer = document.querySelector(".start-game-container");
 let startButton = document.querySelector(".start-game-button");
@@ -22,12 +22,13 @@ startButton.addEventListener('click', () => {
         setTimeout(() => {
             gameContainer.style.opacity = '1';
             gameContainer.style.transform = 'scale(1)';
-        }, 10)
+        }, 50)
     }, 3000);
 })
-*/
 
 // Game
+
+let restartButton = document.querySelector('.restart-button');
 
 // Game info text
 let gameInfo = document.querySelector('.game-info p');
@@ -59,26 +60,6 @@ let computer = 0;
 let player = 0;
 let playerSelection;
 let computerSelection;
-
-function endGame() {
-    if (computer == 5 || player == 5) {
-        buttonsContainer.style = 'pointer-events:none';
-        setTimeout(() => {
-            playerFinalResults.style.bottom = '0px';
-            computerFinalResults.style.bottom = '0px';
-        }, 1000)
-        if (computer > player) {
-            playerFinalResults.firstElementChild.textContent = 'Loser';
-            computerFinalResults.firstElementChild.textContent = 'Winner';
-        } else if (computer < player) {
-            playerFinalResults.firstElementChild.textContent = 'Winner';
-            computerFinalResults.firstElementChild.textContent = 'Loser';
-        } else {
-            playerFinalResults.firstElementChild.textContent = 'Tie';
-            computerFinalResults.firstElementChild.textContent = 'Tie';
-        }
-    };
-};
 
 function iconColor() {
     if (playerSelection == 'ROCK') {
@@ -115,21 +96,18 @@ rockIconPlayer.addEventListener('click', () => {
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
     iconColor();
-    endGame();
 });
 paperIconPlayer.addEventListener('click', () => {
     playerSelection = 'PAPER';
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
     iconColor();
-    endGame();
 });
 scissorsIconPlayer.addEventListener('click', () => {
     playerSelection = 'SCISSORS';
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
     iconColor();
-    endGame();
 });
 
 function getComputerChoice() {
@@ -171,6 +149,48 @@ function playRound(playerSelection, computerSelection) {
     } else {
         gameInfo.textContent = "An error has occurred. Please restart the game.";
     }
+    endGame();
+}
+
+function endGame() {
+    if (computer == 5 || player == 5) {
+        setTimeout(() => {
+            playerFinalResults.classList.add('show');
+            computerFinalResults.classList.add('show');
+        }, 800)
+        buttonsContainer.style = 'pointer-events:none';
+        if (computer > player) {
+            playerFinalResults.firstElementChild.textContent = 'Loser';
+            computerFinalResults.firstElementChild.textContent = 'Winner';
+        } else if (computer < player) {
+            playerFinalResults.firstElementChild.textContent = 'Winner';
+            computerFinalResults.firstElementChild.textContent = 'Loser';
+        } else {
+            playerFinalResults.firstElementChild.textContent = 'Tie';
+            computerFinalResults.firstElementChild.textContent = 'Tie';
+        }
+    };
+}
+
+restartButton.addEventListener('click', restartGame);
+
+function restartGame() {
+    computer = 0;
+    player = 0;
+    gameInfo.textContent = 'Select your weapon';
+    computerScore.textContent = `${computer}`;
+    playerScore.textContent = `${player}`;
+    buttonsContainer.style = 'pointer-events: auto'
+    rockIconPlayer.style = 'color: ; transform: scale(1);';
+    paperIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
+    scissorsIconPlayer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
+    rockIconComputer.style = 'color: ; transform: scale(1);';
+    paperIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
+    scissorsIconComputer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
+    setTimeout(() => {
+        playerFinalResults.classList.remove('show');
+        computerFinalResults.classList.remove('show');
+    }, 500)
 }
 
 /* Console program
