@@ -36,6 +36,10 @@ let gameInfo = document.querySelector('.game-info p');
 let playerScore = document.querySelector('.player-score');
 let computerScore = document.querySelector('.computer-score');
 
+// Final results
+let playerFinalResults = document.querySelector('.player-final-results');
+let computerFinalResults = document.querySelector('.computer-final-results');
+
 // Player icons
 let rockIconPlayer = document.querySelector('#rock-icon-player');
 let paperIconPlayer = document.querySelector('#paper-icon-player');
@@ -46,26 +50,45 @@ let rockIconComputer = document.querySelector('#rock-icon-computer');
 let paperIconComputer = document.querySelector('#paper-icon-computer');
 let scissorsIconComputer = document.querySelector('#scissors-icon-computer');
 
-
+// Internal game variables
 let computer = 0;
 let player = 0;
 let playerSelection;
 let computerSelection;
 
+function endGame() {
+    if (computer == 5 || player == 5) {
+        setTimeout(() => {
+            playerFinalResults.style.bottom = '0px';
+            computerFinalResults.style.bottom = '0px';
+        }, 500)
+        if (computer > player) {
+            playerFinalResults.firstElementChild.textContent = 'Loser';
+            computerFinalResults.firstElementChild.textContent = 'Winner';
+        } else if (computer < player) {
+            playerFinalResults.firstElementChild.textContent = 'Winner';
+            computerFinalResults.firstElementChild.textContent = 'Loser';
+        }
+    };
+};
+
 rockIconPlayer.addEventListener('click', () => {
     playerSelection = 'ROCK';
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    endGame();
 });
 paperIconPlayer.addEventListener('click', () => {
     playerSelection = 'PAPER';
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    endGame();
 });
 scissorsIconPlayer.addEventListener('click', () => {
     playerSelection = 'SCISSORS';
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    endGame();
 });
 
 function getComputerChoice() {
@@ -73,10 +96,7 @@ function getComputerChoice() {
     return (choices[Math.floor(choices.length * Math.random())]);
 }
 
-
-
 function playRound(playerSelection, computerSelection) {
-
     if (playerSelection === computerSelection) {
         gameInfo.textContent = `You both chose ${playerSelection}, it's a tie.`;
     } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {

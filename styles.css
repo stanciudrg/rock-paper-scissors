@@ -378,11 +378,13 @@ header h1 {
 
 .player-container,
 .computer-container {
+    overflow: hidden;
+    position: relative;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
     gap: 1rem;
-    padding: 2rem;
+    padding: 2rem 2rem 1rem 2rem;
     font-size: 1.4rem;
     border: 4px solid #f4f8fc;
     border-radius: 5px;
@@ -429,6 +431,29 @@ header h1 {
 
 #scissors-icon-player:hover {
     transform: scale(1.2) rotate(90deg);
+}
+
+.player-final-results,
+.computer-final-results {
+    font-weight: bold;
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f8fc;
+    width: 100%;
+    height: 120px;
+    transition: .3s ease-out bottom;
+}
+
+.player-final-results p {
+    color: hsl(330, 100%, 45.1%);
+}
+
+.computer-final-results p {
+    color: hsl(23, 100%, 45.1%);
 }
 
 /* ---- */
