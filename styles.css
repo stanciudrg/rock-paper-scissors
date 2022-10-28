@@ -67,7 +67,7 @@ header h1 {
 /* Start game section */
 
 .start-game-container {
-    display: flex;
+    display: none;
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -103,6 +103,7 @@ header h1 {
     font-weight: bold;
     font-size: 1.3rem;
     border-radius: 5px;
+    box-shadow: 1px 1px 13px 1px rgba(5, 5, 5, 0.1);
     cursor: pointer;
 }
 
@@ -219,7 +220,7 @@ header h1 {
 .game-container {
     height: 500px;
     position: relative;
-    display: none;
+    display: flex;
     align-items: center;
     flex-flow: column;
     color: #f4f8fc;
@@ -243,8 +244,8 @@ header h1 {
             hsl(25.65, 88.69%, 47.8%) 92.2%,
             hsl(27.91, 100%, 45.1%) 100%);
     border-radius: 5px;
-    opacity: 0;
-    transform: scale(0);
+    opacity: 1;
+    transform: scale(1);
     transition: .6s ease opacity, .6s ease transform;
 }
 
@@ -375,8 +376,8 @@ header h1 {
 
 /* Twin containers - one for player and one for computer. Similar layout */
 
-.player-score,
-.computer-score {
+.player-container,
+.computer-container {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
@@ -386,6 +387,7 @@ header h1 {
     border: 4px solid #f4f8fc;
     border-radius: 5px;
     box-shadow: 1px 1px 13px 1px rgba(5, 5, 5, 0.1);
+    text-shadow: 1px 1px 13px rgba(5, 5, 5, 0.1);
 }
 
 /* --- */

@@ -1,4 +1,4 @@
-// UI program
+/* UI program
 
 let startContainer = document.querySelector(".start-game-container");
 let startButton = document.querySelector(".start-game-button");
@@ -25,17 +25,53 @@ startButton.addEventListener('click', () => {
         }, 10)
     }, 3000);
 })
+*/
 
-/* Console program
+// Game
 
-console.log("\nWelcome to Rock, Paper and Scissors! Type 'startGame()' in the console to start playing.\n\n")
-let computer = 0;
-let player = 0;
+// Game info text
+let gameInfo = document.querySelector('.game-info p');
+
+// Game score
+let playerScore = document.querySelector('.player-score');
+let computerScore = document.querySelector('.computer-score');
+
+// Player icons
+let rockIconPlayer = document.querySelector('#rock-icon-player');
+let paperIconPlayer = document.querySelector('#paper-icon-player');
+let scissorsIconPlayer = document.querySelector('#scissors-icon-player')
+
+// Computer icons
+let rockIconComputer = document.querySelector('#rock-icon-computer');
+let paperIconComputer = document.querySelector('#paper-icon-computer');
+let scissorsIconComputer = document.querySelector('#scissors-icon-computer');
+
+let playerSelection;
+let computerSelection;
+
+rockIconPlayer.addEventListener('click', () => {
+    playerSelection = 'ROCK';
+    computerSelection = getComputerChoice();
+});
+paperIconPlayer.addEventListener('click', () => {
+    playerSelection = 'PAPER';
+    computerSelection = getComputerChoice();
+});
+scissorsIconPlayer.addEventListener('click', () => {
+    playerSelection = 'SCISSORS';
+    computerSelection = getComputerChoice();
+});
 
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSORS']
     return (choices[Math.floor(choices.length * Math.random())]);
 }
+
+/* Console program
+
+let computer = 0;
+let player = 0;
+
 
 function convertPlayerChoice() {
     let choice = prompt('Rock, Paper or Scissors?');
