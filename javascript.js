@@ -46,25 +46,66 @@ let rockIconComputer = document.querySelector('#rock-icon-computer');
 let paperIconComputer = document.querySelector('#paper-icon-computer');
 let scissorsIconComputer = document.querySelector('#scissors-icon-computer');
 
+
+let computer = 0;
+let player = 0;
 let playerSelection;
 let computerSelection;
 
 rockIconPlayer.addEventListener('click', () => {
     playerSelection = 'ROCK';
     computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 });
 paperIconPlayer.addEventListener('click', () => {
     playerSelection = 'PAPER';
     computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 });
 scissorsIconPlayer.addEventListener('click', () => {
     playerSelection = 'SCISSORS';
     computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 });
 
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSORS']
     return (choices[Math.floor(choices.length * Math.random())]);
+}
+
+
+
+function playRound(playerSelection, computerSelection) {
+
+    if (playerSelection === computerSelection) {
+        gameInfo.textContent = `You both chose ${playerSelection}, it's a tie.`;
+    } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
+        gameInfo.textContent = `PAPER beats ROCK. You lost.`;
+        computer++;
+        computerScore.textContent = `${computer}`;
+    } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
+        gameInfo.textContent = `ROCK beats SCISSORS. You won.`;
+        player++;
+        playerScore.textContent = `${player}`;
+    } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
+        gameInfo.textContent = `PAPER beats ROCK. You won.`;
+        player++;
+        playerScore.textContent = `${player}`;
+    } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
+        gameInfo.textContent = `SCISSORS beats PAPER. You lost.`;
+        computer++;
+        computerScore.textContent = `${computer}`;
+    } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
+        gameInfo.textContent = `ROCK beats SCISSORS. You lost.`;
+        computer++;
+        computerScore.textContent = `${computer}`;
+    } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+        gameInfo.textContent = `SCISSORS beats PAPER. You won.`;
+        player++;
+        playerScore.textContent = `${player}`;
+    } else {
+        gameInfo.textContent = "An error has occurred. Please restart the game.";
+    }
 }
 
 /* Console program
@@ -89,33 +130,6 @@ function checkPlayerChoice() {
         return checkPlayerChoice();
     }
     return choice;
-}
-
-function playRound(playerSelection, computerSelection) {
-
-    if (playerSelection === computerSelection) {
-        return `\nYou both chose ${playerSelection}, it's a tie!\n\n`;
-    } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
-        computer++;
-        return `\nYou chose ${playerSelection} and the computer chose ${computerSelection}. \nPAPER beats ROCK. You lost!\n\n`;
-    } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
-        player++;
-        return `\nYou chose ${playerSelection} and the computer chose ${computerSelection}. \nROCK beats SCISSORS. You won!\n\n`;
-    } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
-        player++;
-        return `\nYou chose ${playerSelection} and the computer chose ${computerSelection}. \nPAPER beats ROCK. You won!\n\n`;
-    } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
-        computer++;
-        return `\nYou chose ${playerSelection} and the computer chose ${computerSelection}. \nSCISSORS beats PAPER. You lost!\n\n`;
-    } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
-        computer++;
-        return `\nYou chose ${playerSelection} and the computer chose ${computerSelection}. \nROCK beats SCISSORS. You lost!\n\n`;
-    } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
-        player++;
-        return `\nYou chose ${playerSelection} and the computer chose ${computerSelection}. \nSCISSORS beats PAPER. You won!\n\n`;
-    } else {
-        return "\nYou cancelled the game. Enter 'startGame()' in the console if you want to play again.\n\n";
-    }
 }
 
 function startGame() {
