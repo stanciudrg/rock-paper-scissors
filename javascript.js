@@ -1,5 +1,7 @@
 // UI program
 
+// Home
+
 let startContainer = document.querySelector(".start-game-container");
 let startButton = document.querySelector(".start-game-button");
 console.log(startButton);
@@ -20,29 +22,20 @@ startButton.addEventListener('click', () => {
         gameContainer.style.display = 'flex';
         // Adds transition for Game Container
         setTimeout(() => {
-            gameContainer.style.opacity = '1';
-            gameContainer.style.transform = 'scale(1)';
-        }, 50)
+            gameContainer.classList.add('show');
+        }, 10)
     }, 3000);
-})
+}, false)
 
 // Game
 
-let restartButton = document.querySelector('.restart-button');
-
-// Game info text
-let gameInfo = document.querySelector('.game-info p');
-
-// Game score
-let playerScore = document.querySelector('.player-score');
-let computerScore = document.querySelector('.computer-score');
-
-// Final results
-let playerFinalResults = document.querySelector('.player-final-results');
-let computerFinalResults = document.querySelector('.computer-final-results');
+// Internal game variables
+let computer = 0;
+let player = 0;
+let playerSelection;
+let computerSelection;
 
 // Player and computer icons container
-
 let buttonsContainer = document.querySelector('.game-buttons');
 
 // Player icons
@@ -55,66 +48,53 @@ let rockIconComputer = document.querySelector('#rock-icon-computer');
 let paperIconComputer = document.querySelector('#paper-icon-computer');
 let scissorsIconComputer = document.querySelector('#scissors-icon-computer');
 
-// Internal game variables
-let computer = 0;
-let player = 0;
-let playerSelection;
-let computerSelection;
+// Game info text
+let gameInfo = document.querySelector('.game-info p');
 
-function iconColor() {
-    if (playerSelection == 'ROCK') {
-        rockIconPlayer.style = 'color: ; transform: scale(1.2);';
-        paperIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
-        scissorsIconPlayer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
-    } else if (playerSelection == 'PAPER') {
-        rockIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
-        paperIconPlayer.style = 'color: ; transform: scale(1.2)';
-        scissorsIconPlayer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
-    } else if (playerSelection = 'SCISSORS') {
-        rockIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
-        paperIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
-        scissorsIconPlayer.style = 'color: ; transform: scale(1.3) rotate(90deg);';
-    }
+// Game score
+let playerScore = document.querySelector('.player-score');
+let computerScore = document.querySelector('.computer-score');
 
-    if (computerSelection == 'ROCK') {
-        rockIconComputer.style = 'color: ; transform: scale(1.2);';
-        paperIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
-        scissorsIconComputer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
-    } else if (computerSelection == 'PAPER') {
-        rockIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
-        paperIconComputer.style = 'color: ; transform: scale(1.2)';
-        scissorsIconComputer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
-    } else if (computerSelection = 'SCISSORS') {
-        rockIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
-        paperIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
-        scissorsIconComputer.style = 'color: ; transform: scale(1.2) rotate(90deg);';
-    }
-}
+// Final results
+let playerFinalResults = document.querySelector('.player-final-results');
+let computerFinalResults = document.querySelector('.computer-final-results');
 
+// Restart game button
+let restartButton = document.querySelector('.restart-button');
+
+// Event listeners
 rockIconPlayer.addEventListener('click', () => {
     playerSelection = 'ROCK';
     computerSelection = getComputerChoice();
+    iconSelect();
     playRound(playerSelection, computerSelection);
-    iconColor();
 });
+
 paperIconPlayer.addEventListener('click', () => {
     playerSelection = 'PAPER';
     computerSelection = getComputerChoice();
+    iconSelect();
     playRound(playerSelection, computerSelection);
-    iconColor();
 });
+
 scissorsIconPlayer.addEventListener('click', () => {
     playerSelection = 'SCISSORS';
     computerSelection = getComputerChoice();
+    iconSelect();
     playRound(playerSelection, computerSelection);
-    iconColor();
 });
 
+restartButton.addEventListener('click', restartGame);
+
+// Functions
+
+// Function that generates a random choice for the computer
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSORS']
     return (choices[Math.floor(choices.length * Math.random())]);
 }
 
+// Function that keeps track of the game, it increments the score and displays a text containing the results of reach round
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         gameInfo.textContent = `You both chose ${playerSelection}, it's a tie.`;
@@ -149,15 +129,103 @@ function playRound(playerSelection, computerSelection) {
     } else {
         gameInfo.textContent = "An error has occurred. Please restart the game.";
     }
+    // Run the endGame function after each round to check the score and end the game if necessary
     endGame();
 }
 
+// Function that displays animations when a value is selected by player or computer
+function iconSelect() {
+    // Player
+
+    // If the selected element is already selected, restart the animation
+    if (playerSelection == 'ROCK') {
+        if (rockIconPlayer.style.transform == 'scale(1.25)') {
+            rockIconPlayer.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                rockIconPlayer.style.transform = 'scale(1.25)';
+            }, 100);
+        } else {
+            rockIconPlayer.style.transform = 'scale(1.25)';
+        }
+        paperIconPlayer.style.transform = 'scale(1)';
+        scissorsIconPlayer.style.transform = 'scale(1) rotate(90deg)';
+    } else if (playerSelection == 'PAPER') {
+
+        // If the selected element is already selected, restart the animation
+        if (paperIconPlayer.style.transform == 'scale(1.25)') {
+            paperIconPlayer.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                paperIconPlayer.style.transform = 'scale(1.25)';
+            }, 100);
+        } else {
+            paperIconPlayer.style.transform = 'scale(1.25)';
+        }
+        rockIconPlayer.style.transform = 'scale(1)';
+        scissorsIconPlayer.style.transform = 'scale(1) rotate(90deg)';
+    } else if (playerSelection = 'SCISSORS') {
+
+        // If the selected element is already selected, restart the animation
+        if (scissorsIconPlayer.style.transform == 'scale(1.25) rotate(90deg)') {
+            scissorsIconPlayer.style.transform = 'scale(0.8) rotate(90deg)';
+            setTimeout(() => {
+                scissorsIconPlayer.style.transform = 'scale(1.25) rotate(90deg)';
+            }, 100);
+        } else {
+            scissorsIconPlayer.style.transform = 'scale(1.25) rotate(90deg)';
+        }
+        rockIconPlayer.style.transform = 'scale(1)';
+        paperIconPlayer.style.transform = 'scale(1)';
+    }
+    // Computer
+    if (computerSelection == 'ROCK') {
+
+        // If the selected element is already selected, restart the animation
+        if (rockIconComputer.style.transform == 'scale(1.25)') {
+            rockIconComputer.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                rockIconComputer.style.transform = 'scale(1.25)';
+            }, 100);
+        } else {
+            rockIconComputer.style.transform = 'scale(1.25)';
+        }
+        paperIconComputer.style = 'transform: scale(1);';
+        scissorsIconComputer.style = 'transform: scale(1) rotate(90deg);';
+    } else if (computerSelection == 'PAPER') {
+
+        // If the selected element is already selected, restart the animation
+        if (paperIconComputer.style.transform == 'scale(1.25)') {
+            paperIconComputer.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                paperIconComputer.style.transform = 'scale(1.25)';
+            }, 100);
+        } else {
+            paperIconComputer.style.transform = 'scale(1.25)';
+        }
+        rockIconComputer.style = 'transform: scale(1);';
+        scissorsIconComputer.style = 'transform: scale(1) rotate(90deg);';
+    } else if (computerSelection = 'SCISSORS') {
+
+        // If the selected element is already selected, restart the animation
+        if (scissorsIconComputer.style.transform == 'scale(1.25) rotate(90deg)') {
+            scissorsIconComputer.style.transform = 'scale(0.8) rotate(90deg)';
+            setTimeout(() => {
+                scissorsIconComputer.style.transform = 'scale(1.25) rotate(90deg)';
+            }, 100);
+        } else {
+            scissorsIconComputer.style.transform = 'scale(1.25) rotate(90deg)';
+        }
+        rockIconComputer.style = 'transform: scale(1);';
+        paperIconComputer.style = 'transform: scale(1);';
+    }
+}
+
+// Function that constantly checks the score of the game. If there is a winner, it will end the game immediately
 function endGame() {
     if (computer == 5 || player == 5) {
         setTimeout(() => {
             playerFinalResults.classList.add('show');
             computerFinalResults.classList.add('show');
-        }, 800)
+        }, 500)
         buttonsContainer.style = 'pointer-events:none';
         if (computer > player) {
             playerFinalResults.firstElementChild.textContent = 'Loser';
@@ -172,8 +240,8 @@ function endGame() {
     };
 }
 
-restartButton.addEventListener('click', restartGame);
-
+// Function that runs when restartButton is clicked. It resets all the information regarding the current game and starts
+// a new one with fresh values
 function restartGame() {
     computer = 0;
     player = 0;
@@ -181,17 +249,19 @@ function restartGame() {
     computerScore.textContent = `${computer}`;
     playerScore.textContent = `${player}`;
     buttonsContainer.style = 'pointer-events: auto'
-    rockIconPlayer.style = 'color: ; transform: scale(1);';
-    paperIconPlayer.style = 'color: #f4f8fc; transform: scale(1);';
-    scissorsIconPlayer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
-    rockIconComputer.style = 'color: ; transform: scale(1);';
-    paperIconComputer.style = 'color: #f4f8fc; transform: scale(1);';
-    scissorsIconComputer.style = 'color: #f4f8fc; transform: scale(1) rotate(90deg);';
+    rockIconPlayer.style = 'transform: scale(1);';
+    paperIconPlayer.style = 'transform: scale(1);';
+    scissorsIconPlayer.style = 'transform: scale(1) rotate(90deg);';
+    rockIconComputer.style = 'transform: scale(1);';
+    paperIconComputer.style = 'transform: scale(1);';
+    scissorsIconComputer.style = 'transform: scale(1) rotate(90deg);';
     setTimeout(() => {
         playerFinalResults.classList.remove('show');
         computerFinalResults.classList.remove('show');
-    }, 500)
+    }, 300)
 }
+
+
 
 /* Console program
 
