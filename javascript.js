@@ -218,3 +218,21 @@ function endGame() {
     };
 }
 
+function restartGame() {
+    buttonsContainer.style = 'pointer-events: auto'
+    computer = 0;
+    player = 0;
+    rockIconPlayer.classList.remove('selected');
+    paperIconPlayer.classList.remove('selected');
+    scissorsIconPlayer.classList.remove('selected');
+    rockIconComputer.classList.remove('selected');
+    paperIconComputer.classList.remove('selected');
+    scissorsIconComputer.classList.remove('selected');
+    gameInfo.textContent = 'Select your weapon';
+    computerScore.textContent = `${computer}`;
+    playerScore.textContent = `${player}`;
+    setTimeout(() => {
+        playerFinalResults.classList.remove('show');
+        computerFinalResults.classList.remove('show');
+    }, 500)
+}
