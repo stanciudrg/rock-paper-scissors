@@ -6,10 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/469d5b5476.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <header>
+        <h1><span class="rock">Rock</span><span class="paper"> Paper</span><span class="scissors"> Scissors</span></h1>
+    </header>
+    <div class="start-game-container">
+        <div class="start-game-button">
+            <p>START GAME</p>
+        </div>
+    </div>
+    <div class=" game-container">
+        <div class="game-title">
+            <a class="home-button" href="index.html">Home</a>
+            <h2>First to 5 wins</h2>
+            <div class="restart-button">
+                <p>Restart</p>
+            </div>
+        </div>
+        <div class="game-info">
+            <p>Select your weapon</p>
+        </div>
+        <div class="scoreboard">
+            <div class="player-container">
+                <div class="player-name">Player</div>
+                <div class="player-score">0</div>
+                <div class="game-buttons">
+                    <span class="rock-icon-player"><i class="fa-solid fa-hand-back-fist"></i></span>
+                    <span class="paper-icon-player"><i class="fa-solid fa-hand"></i></span>
+                    <span class="scissors-icon-player"><i class="fa-solid fa-hand-scissors"></i></span>
+                </div>
+                <div class="player-final-results">
+                    <p>Winner</p>
+                </div>
+            </div>
+            <div class="computer-container">
+                <div class="computer-name">Computer</div>
+                <div class="computer-score">0</div>
+                <div class="game-buttons">
+                    <span class="rock-icon-computer"><i class="fa-solid fa-hand-back-fist"></i></span>
+                    <span class="paper-icon-computer"><i class="fa-solid fa-hand"></i></span>
+                    <span class="scissors-icon-computer"><i class="fa-solid fa-hand-scissors"></i></span>
+                </div>
+                <div class="computer-final-results">
+                    <p>Loser</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
