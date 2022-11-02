@@ -2,7 +2,7 @@
 
 // Home
 
-let startContainer = document.querySelector(".start-game-container");
+let startGameContainer = document.querySelector(".start-game-container");
 let startButton = document.querySelector(".start-game-button");
 let gameContainer = document.querySelector(".game-container");
 
@@ -11,7 +11,7 @@ let gameContainer = document.querySelector(".game-container");
 startButton.addEventListener('click', () => {
     startButton.classList.add('hide');
     setTimeout(() => {
-        startContainer.style.display = 'none';
+        startGameContainer.style.display = 'none';
         startButton.style.display = 'none';
         gameContainer.style.display = 'flex';
         // Adds transition for Game Container
@@ -159,7 +159,7 @@ function playRound(playerSelection, computerSelection) {
         paperIconComputer.classList.remove('selected');
     }
 
-    // Compare the choices of the computer vs player and update the score along with the round information area.
+    // Compare the choices of the computer vs player and update the score along with gameInfo.
     if (playerSelection === computerSelection) {
         gameInfo.textContent = `You both chose ${playerSelection}, it's a tie.`;
         computer++;
@@ -193,11 +193,11 @@ function playRound(playerSelection, computerSelection) {
     } else {
         gameInfo.textContent = "An error has occurred. Please restart the game.";
     }
-    // Run the endGame function after each round to check the score and end the game if necessary
+    // Run the endGame function after each round to check the score and end the game if necessary.
     endGame();
 }
 
-// Function that constantly checks the score of the game. If there is a winner, it will end the game immediately
+// Function that constantly checks the score of the game. If it finds a winner, it will end the game immediately.
 function endGame() {
     if (computer == 5 || player == 5) {
         setTimeout(() => {

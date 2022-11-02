@@ -66,21 +66,18 @@ header h1 {
 /* Start game section */
 
 .start-game-container {
+    height: 500px;
     display: flex;
-    flex-flow: column;
-    justify-content: center;
     align-items: center;
-    margin: auto;
 }
 
 .start-game-button {
-    margin-top: 10rem;
-    position: relative;
     width: 200px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
     background-image:
         linear-gradient(to right,
             hsl(330, 100%, 45.1%) 0%,
@@ -391,8 +388,12 @@ header h1 {
         font-size: 2rem;
     }
 
+    .start-game-container {
+        height: 600px;
+    }
+
     .game-container {
-        padding: 2rem 1rem;
+        padding: 1rem 1rem;
         margin-top: 3rem;
         margin-bottom: 1rem;
         height: 600px;
@@ -400,7 +401,7 @@ header h1 {
     }
 
     .game-title h2 {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
         margin: 0 0.5rem;
     }
 
