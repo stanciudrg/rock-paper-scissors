@@ -200,11 +200,11 @@ function playRound(playerSelection, computerSelection) {
 // Function that constantly checks the score of the game. If it finds a winner, it will end the game immediately.
 function endGame() {
     if (computer == 5 || player == 5) {
+        buttonsContainer.style = 'pointer-events:none';
         setTimeout(() => {
             playerFinalResults.classList.add('show');
             computerFinalResults.classList.add('show');
         }, 500)
-        buttonsContainer.style = 'pointer-events:none';
         if (computer > player) {
             playerFinalResults.firstElementChild.textContent = 'Loser';
             computerFinalResults.firstElementChild.textContent = 'Winner';
@@ -221,6 +221,10 @@ function endGame() {
 // Function that runs when restartButton is clicked. It resets all the information regarding the current game and starts
 // a new one with fresh values
 function restartGame() {
+    setTimeout(() => {
+        playerFinalResults.classList.remove('show');
+        computerFinalResults.classList.remove('show');
+    }, 500)
     buttonsContainer.style = 'pointer-events: auto'
     computer = 0;
     player = 0;
@@ -233,8 +237,5 @@ function restartGame() {
     gameInfo.textContent = 'Select your weapon';
     computerScore.textContent = `${computer}`;
     playerScore.textContent = `${player}`;
-    setTimeout(() => {
-        playerFinalResults.classList.remove('show');
-        computerFinalResults.classList.remove('show');
-    }, 500)
+
 }
